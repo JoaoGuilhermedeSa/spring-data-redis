@@ -3,6 +3,7 @@ package com.example.redis.unified.service;
 import com.example.redis.unified.model.Product;
 import com.example.redis.unified.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,4 +29,16 @@ public class ProductService {
     public Iterable<Product> findAll() {
         return productRepository.findAll();
     }
+
+    @Cacheable(value = "products_cache")
+    public Iterable<Product> findAllWithDelay() {
+        try {
+            Thread.sleep(1000l);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        return productRepository.findAll();
+    }
+
 }

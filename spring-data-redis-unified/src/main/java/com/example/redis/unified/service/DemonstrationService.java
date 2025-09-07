@@ -21,9 +21,6 @@ public class DemonstrationService {
     private static final String PRODUCT_KEY_PREFIX = "product:";
 
     @Autowired
-    private CachingService cachingService;
-
-    @Autowired
     private ProductService productService;
 
     @Autowired
@@ -38,15 +35,15 @@ public class DemonstrationService {
     public void demonstrateCaching() {
         System.out.println("\n---- Demonstrating Caching ----");
 
-        System.out.println("First call to longRunningTask(2). Should take 2 seconds.");
+        System.out.println("Getting all products in DB");
         long start = System.currentTimeMillis();
-        cachingService.longRunningTask(2);
+        productService.findAllWithDelay();
         long end = System.currentTimeMillis();
         System.out.println("Call took " + (end - start) + "ms");
 
-        System.out.println("\nSecond call to longRunningTask(2). Should be fast, from cache.");
+        System.out.println("\nSecond call to findAllWithDelay(). Should be fast, from cache.");
         start = System.currentTimeMillis();
-        cachingService.longRunningTask(2);
+        productService.findAllWithDelay();
         end = System.currentTimeMillis();
         System.out.println("Call took " + (end - start) + "ms");
     }
