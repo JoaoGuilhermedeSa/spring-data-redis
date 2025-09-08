@@ -23,7 +23,6 @@ public class StreamConsumerService implements StreamListener<String, MapRecord<S
             System.out.println("Received generic stream message: " + value + " with ID: " + message.getId());
         }
 
-        // Acknowledge the message
         redisTemplate.opsForStream().acknowledge(RedisStreamConfig.STREAM_KEY, RedisStreamConfig.GROUP_NAME, message.getId());
         System.out.println("Acknowledged stream message: " + message.getId());
     }

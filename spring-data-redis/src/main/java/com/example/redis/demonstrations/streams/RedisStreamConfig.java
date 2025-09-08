@@ -27,9 +27,10 @@ public class RedisStreamConfig {
     public Subscription subscription(RedisConnectionFactory factory, RedisTemplate<String, Object> redisTemplate) {
         try {
             // Create the stream and group if they don't exist
-            redisTemplate.opsForStream().createGroup(STREAM_KEY, ReadOffset.from("0-0"), GROUP_NAME);
+            redisTemplate.opsForStream()
+            .createGroup(STREAM_KEY, ReadOffset.from("0-0"), GROUP_NAME);
         } catch (Exception e) {
-            // Group might already exist, which is fine
+            // Group might already exist, which is fine for the demo
         }
 
         StreamMessageListenerContainer.StreamMessageListenerContainerOptions<String, MapRecord<String, String, String>> options = StreamMessageListenerContainer

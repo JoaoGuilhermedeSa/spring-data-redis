@@ -1,0 +1,11 @@
+meta {
+  name: rest-get-all
+  type: http
+  seq: 10
+}
+
+get {
+  url: http://localhost:8080/products
+  body: json
+  auth: inherit
+}

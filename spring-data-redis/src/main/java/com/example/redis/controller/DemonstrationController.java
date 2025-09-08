@@ -53,10 +53,4 @@ public class DemonstrationController {
         redisTemplateDemonstration.run();
         return "RedisTemplate demonstration finished. Check the console for output.";
     }
-
-    // This endpoint seems to be using ProductService directly, so I'll keep it.
-    @PostMapping("/cached-products")
-    public Iterable<Product> demonstrateCachedProducts() {
-        return productService.findAllWithDelay();
-    }
 }

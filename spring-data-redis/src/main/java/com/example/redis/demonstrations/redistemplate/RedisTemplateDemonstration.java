@@ -20,7 +20,6 @@ public class RedisTemplateDemonstration {
     public void run() {
         System.out.println("\n---- Demonstrating RedisTemplate Operations ----");
 
-        // Create a product
         Product product = new Product("P999", "Gaming Monitor", 399.99);
         redisTemplate.opsForValue().set(PRODUCT_KEY_PREFIX + product.getId(), product);
 
