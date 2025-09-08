@@ -49,13 +49,3 @@ The application also exposes a REST API for managing products that are generated
 | `GET`   | `/products/search/findByName?name=` | Find product(s) by name      |
 
 ---
-
-
-## Streams
-
-The application also demonstrates Redis Streams.
-
--   **POST /send**: Send a message to the stream. The body of the request should be a JSON object, for example: `{"key": "value"}`.
-
-
-
